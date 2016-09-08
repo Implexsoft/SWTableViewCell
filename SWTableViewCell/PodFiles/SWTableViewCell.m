@@ -301,7 +301,15 @@ static NSString * const kTableViewPanState = @"state";
 
 - (void)layoutSubviews
 {
-    [super layoutSubviews];
+    // fix problem for iPad shows left button on first load
+    BOOL isPad = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad;
+    if (isPad) {
+        layoutUpdating = YES;
+        [super layoutSubviews];
+        layoutUpdating = NO;
+    }else{
+        [super layoutSubviews];
+    }
     
     // Offset the contentView origin so that it appears correctly w/rt the enclosing scroll view (to which we moved it).
     CGRect frame = self.contentView.frame;
