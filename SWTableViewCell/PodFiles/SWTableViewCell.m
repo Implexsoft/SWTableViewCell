@@ -320,7 +320,8 @@ static NSString * const kTableViewPanState = @"state";
     
     if (!self.cellScrollView.isTracking && !self.cellScrollView.isDecelerating)
     {
-        self.cellScrollView.contentOffset = [self contentOffsetForCellState:_cellState];
+//        self.cellScrollView.contentOffset = [self contentOffsetForCellState:_cellState];
+        self.cellScrollView.contentOffset = [self contentOffsetForCellState:kCellStateCenter];
     }
     
     [self updateCellState];
